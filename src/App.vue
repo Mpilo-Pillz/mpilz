@@ -1,4 +1,6 @@
 <template>
+<app-header></app-header>
+<app-navigator></app-navigator>
   <div id="nav">
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
@@ -28,3 +30,13 @@
   }
 }
 </style>
+<script lang="ts">
+import AppHeader from './components/shared/Header.vue';
+import AppNavigator from './components/shared/Navigator.vue';
+export default {
+  components: {
+    AppHeader,
+    AppNavigator
+  }
+}
+</script>
