@@ -1,32 +1,54 @@
 <template>
-  <nav class="nav">
-    <ul>
-      <router-link to="/learning">
-        <li>learning</li>
-      </router-link>
-      <router-link to="/projects">
-        <li>projects</li>
-      </router-link>
+<nav class="sidebar">
+             <ul class="side-nav">
+               <router-link v-for="(navItem) in navItems" v-bind:key="navItem" v-bind:to="navItem.route" active-class="router-link-active">
+                 <li class="side-nav__item side-nav__link">
+                   <span class="user-nav__icon side-nav__icon">
 
-      <router-link to="/career">
-        <li>career summary</li>
-      </router-link>
-
-      <router-link to="/" active-class="mobile-nav__item--cta">
-        <li>home</li>
-      </router-link>
-    </ul>
-  </nav>
+                         <ion-icon v-bind:name="navItem.icon"></ion-icon>
+                   </span>
+                         <span>{{navItem.title}}</span>
+                 </li>
+                 </router-link>
+             </ul>
+             <div class="legal">
+                 &copy; 2017 by Dla-mini. Designed by Jonas Schmedttmann
+             </div>
+         </nav>
+  
 </template>
-<script>
+<script lang="ts">
 export default {
   name: "appNavigator",
+  data() {
+    return {
+      navItems: [
+        {
+          title: 'Learning',
+          route: '/learning',
+          icon: 'book'
+        },
+        {
+          title: 'Projects',
+          route: '/projects',
+          icon: 'laptop'
+        },
+        {
+          title: 'Career',
+          route: '/career',
+          icon: 'briefcase'
+        },
+        {
+          title: 'Home',
+          route: '/',
+          icon: 'home'
+        },
+
+      ]
+    }
+  }
 };
 </script>
-<style lang="scss" scoped>
-.mobile-nav__item--cta {
-  color: red;
-  font-weight: bold;
-  font-size: 2rem;
-}
-</style>
+
+
+
